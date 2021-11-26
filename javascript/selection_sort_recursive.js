@@ -1,5 +1,25 @@
+function findMinValue(arr){
+  let min = arr[0];
+  for (i = 0; i < arr.length; i++){
+    if (arr[i] < min){
+      min = arr[i];
+    }
+  }
+  return min;
+}
+
 function selectionSortRecursive(arr) {
-  // type your code here
+  if (arr.length === 0) {
+    return [];
+  }
+
+  let minValue = findMinValue(arr);
+  let index = arr.indexOf(minValue);
+  arr.splice(index, 1);
+
+  let result = selectionSortRecursive(arr);
+  result.unshift(minValue);
+  return result;
 }
 
 if (require.main === module) {
